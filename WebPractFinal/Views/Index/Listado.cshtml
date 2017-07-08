@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebPractFinal.ServiceReference1.clientes>
+
+@{
+    ViewBag.Title = "Listado";
+}
+
+<h2>Listado</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idcliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idpais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombrecia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombrepais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idcliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idpais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombrecia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombrepais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Eliminar", new { id=item.idcliente }) 
+            
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+
+    @for (int i = 0; i < (int)ViewBag.numereg; i++)
+    {
+
+        @Html.ActionLink((i + 1).ToString(), "Listado", new { pag = i }, new { @class = "btn btn-primary" })
+
+    }
+
+</div>
